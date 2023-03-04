@@ -5,8 +5,8 @@ LABEL io.k8s.description="A basic Apache HTTP Server child image, uses ONBUILD" 
       io.openshift.expose-services="80:http" \
       io.openshift.tags="apache, httpd"
 ENV DOCROOT=/var/www/html
-RUN yum install -y --no-docs --disableplugin=subscription-manager httpd
-RUN yum clean all --disableplugin=subscription-manager -y
+RUN yum install -y httpd
+RUN yum clean all -y
 RUN echo "Hello from the httpd-parent container!" > ${DOCROOT}/index.html
 # Allows child images to inject their own content into DocumentRoot
 
